@@ -1,6 +1,7 @@
 import React from "react"
 
 const Header = (props) => {
+  console.log(props)
   return (
     <div>
       <p>{props.course} </p>  
@@ -9,37 +10,51 @@ const Header = (props) => {
 }
 
 const Content = (props) => {
+  console.log(props)
   return (
     <div>
-     <p>The parts of the course are {props.parts}</p>
+    <p>los cursos son {props.parts} </p>
    </div>
   )
 }
+
 const Total = (props) => {
+  console.log('dentro de total' + props)
   return (
     <div>
-      <p>Total number of exercises is {props.total}</p>
+      <p>Total number of exercises is {props.parts}</p>
     </div>
   )
 }
 
 const App = () => {
-  const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+  const course = {
+    name:'Half Stack application development',
+    parts: [
+    {
+      name: 'Fundamentals of React ',
+      exercises: 10
+    },
+    {
+      name: 'Using props to pass data ',
+      exercises: 7
+    },
+    {
+      name: 'State of a component ',
+      exercises: 14
+    }
+  ]
+}
 
   return (
     <div>
-      <Header course = {course} />
-      <Content parts = {part1 + ', it has' +exercises1 + 'exercises. '+  part2 + 'has ' + exercises2 + ' and ' + part3 + ' has ' + exercises3} />
-      <Total total = {exercises1 + exercises2 + exercises3}/>
+      <Header course = {course.name} />
+      <Content parts = {course.parts[0].name + '' + course.parts[1].name + '' + course.parts[2].name}/>
+      <Total parts = {course.parts[0].exercises + course.parts[1].exercises}/>
       <p>
       </p>
     </div>
   )
 }
+//<Content parts = {part1 + ', it has' +exercises1 + 'exercises. '+  part2 + 'has ' + exercises2 + ' and ' + part3 + ' has ' + exercises3} />//
 export default App
